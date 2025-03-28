@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gregorio Aristizábal</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #3a86ff;
+      --primary-hover: #2667cc;
+      --bg-color: #f8f9fa;
+      --text-color: #333;
+      --card-bg: #fff;
+      --tech-color: #e9f5ff;
+      --business-color: #fff6e9;
+      --personal-color: #f3edff;
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+    [data-theme="dark"] {
+      --primary-color: #4d9aff;
+      --primary-hover: #2d7ddb;
+      --bg-color: #121212;
+      --text-color: #f1f1f1;
+      --card-bg: #1e1e1e;
+      --tech-color: #0a2440;
+      --business-color: #4a3000;
+      --personal-color: #2d1d4d;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: var(--transition);
+      position: relative;
+    }
+    .container {
+      margin: 1rem auto;
+      max-width: 960px;
+      background: var(--card-bg);
+      padding: 3rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      animation: fadeIn 1s ease;
+      position: relative;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      border: 4px solid var(--primary-color);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1.5s ease;
+    }
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin: 0.2em 0;
+      background: linear-gradient(120deg, var(--primary-color), #8c52ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tagline {
+      font-size: 1.2rem;
+      color: var(--text-color);
+      opacity: 0.85;
+      margin-bottom: 1.8em;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+    .about {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin: 0 auto 2.5em;
+      text-align: center;
+      max-width: 80%;
+      padding: 0 1rem;
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7em 1.4em;
+      text-decoration: none;
+      color: white;
+      background-color: var(--primary-color);
+      border-radius: 30px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .links a:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .skills {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .skills-category {
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      transition: var(--transition);
+    }
+    .skills-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    }
+    .skills-category h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    .skills-category h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--primary-color);
+      border-radius: 3px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--text-color);
+      opacity: 0.9;
+      transition: var(--transition);
+    }
+    .skill i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+      transition: var(--transition);
+    }
+    .skill:hover {
+      transform: translateY(-6px);
+    }
+    .skill:hover i {
+      transform: scale(1.2);
+    }
+    .tech { background-color: var(--tech-color); }
+    .business { background-color: var(--business-color); }
+    .personal { background-color: var(--personal-color); }
+    
+    .theme-toggle {
+      background: var(--card-bg);
+      color: var(--text-color);
+      border: 2px solid var(--primary-color);
+      border-radius: 30px;
+      padding: 0.4em 1em;
+      cursor: pointer;
+      font-weight: bold;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .theme-toggle:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .top-controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+    
+    .language-selector {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+    }
+    
+    .lang-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid transparent;
+      background-color: var(--card-bg);
+      font-weight: bold;
+      transition: var(--transition);
+    }
+    
+    .lang-btn:hover, .lang-btn.active {
+      border-color: var(--primary-color);
+      transform: scale(1.1);
+    }
+    
+    .lang-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+      .about {
+        max-width: 100%;
+        padding: 0;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 1rem;
+      }
+      .language-selector {
+        top: 10px;
+        left: 10px;
+      }
+      .top-controls {
+        top: 10px;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="language-selector">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+    <button class="lang-btn" data-lang="pt">PT</button>
+    <button class="lang-btn" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="zh">中</button>
+    <button class="lang-btn" data-lang="th">TH</button>
+  </div>
+  
+  <div class="top-controls">
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <i class="fas fa-moon"></i> <span data-i18n="theme">Theme</span>
+    </button>
+  </div>
+  
+  <div class="container">
+    <img src="./img/gregorio.aristizabal.jpg" alt="Gregorio Aristizábal" class="avatar" />
+    <h1>Gregorio Aristizábal</h1>
+    <div class="tagline" data-i18n="tagline">Software Engineer · Marketing Ops · Photographer · Digital Explorer</div>
+    <div class="about" data-i18n="about">
+      I love building solutions that connect people and solve real-world problems. Throughout my career, I've worked across diverse industries, blending technology, strategy, and creativity. I'm also a professional photographer, certified scuba diver, meditator, and lifelong learner — always curious, always creating with purpose.
+    </div>
+    <div class="links">
+      <a href="https://github.com/grrek" target="_blank"><i class="fab fa-github"></i> <span data-i18n="github">GitHub</span></a>
+      <a href="https://www.linkedin.com/in/gregorio" target="_blank"><i class="fab fa-linkedin"></i> <span data-i18n="linkedin">LinkedIn</span></a>
+    </div>
+    <div class="skills">
+      <div class="skills-category tech">
+        <h3 data-i18n="tech-stack">Tech Stack</h3>
+        <div class="skills-grid">
+          <div class="skill"><i class="fas fa-network-wired" title="DevOps"></i><span data-i18n="devops">DevOps</span></div>
+          <div class="skill"><i class="fas fa-bullhorn" title="Marketing Operations"></i><span data-i18n="markops">MarkOps</span></div>
+          <div class="skill"><i class="fas fa-code" title="Software Development"></i><span data-i18n="coding">Coding</span></div>
+          <div class="skill"><i class="fas fa-robot" title="AI, Node-RED, n8n"></i><span data-i18n="ai">AI / n8n</span></div>
+          <div class="skill"><i class="fab fa-linux" title="Linux"></i><span data-i18n="linux">Linux</span></div>
+          <div class="skill"><i class="fas fa-server" title="Home Assistant & Raspberry Pi"></i><span data-i18n="iot">IoT</span></div>
+          <div class="skill"><i class="fas fa-database" title="SQL"></i><span data-i18n="sql">SQL</span></div>
+          <div class="skill"><i class="fab fa-docker" title="Docker"></i><span data-i18n="docker">Docker</span></div>
+          <div class="skill"><i class="fab fa-html5" title="HTML5"></i><span data-i18n="html">HTML</span></div>
+          <div class="skill"><i class="fab fa-js" title="JavaScript"></i><span data-i18n="js">JS</span></div>
+        </div>
+      </div>
+      <div class="skills-category business">
+        <h3 data-i18n="business">Business</h3>
+        <div class="skills-grid">
+          <div class="skill"><i class="fas fa-bullhorn" title="Marketing Operations"></i><span data-i18n="marketing">Marketing</span></div>
+          <div class="skill"><i class="fas fa-chart-line" title="Growth Hacking"></i><span data-i18n="growth">Growth</span></div>
+          <div class="skill"><i class="fab fa-google" title="Google Ads"></i><span data-i18n="google-ads">Google Ads</span></div>
+          <div class="skill"><i class="fab fa-facebook" title="Meta Ads"></i><span data-i18n="meta-ads">Meta Ads</span></div>
+          <div class="skill"><i class="fas fa-lightbulb" title="Leadership"></i><span data-i18n="leadership">Leadership</span></div>
+          <div class="skill"><i class="fas fa-object-group" title="UX/UI Design"></i><span data-i18n="ux-ui">UX/UI</span></div>
+        </div>
+      </div>
+      <div class="skills-category personal">
+        <h3 data-i18n="personal">Personal</h3>
+        <div class="skills-grid">
+          <div class="skill"><i class="fas fa-spa" title="Meditation"></i><span data-i18n="meditation">Meditation</span></div>
+          <div class="skill"><i class="fas fa-dharmachakra" title="Buddhism"></i><span data-i18n="buddhism">Buddhism</span></div>
+          <div class="skill"><i class="fas fa-print" title="3D Printing"></i><span data-i18n="3d-printing">3D Printing</span></div>
+          <div class="skill"><i class="fas fa-cube" title="3D Modeling"></i><span data-i18n="3d-modeling">3D Modeling</span></div>
+          <div class="skill"><i class="fas fa-headphones" title="Audiophile"></i><span data-i18n="audiophile">Audiophile</span></div>
+          <div class="skill"><i class="fas fa-leaf" title="Sustainability"></i><span data-i18n="sustainability">Sustainability</span></div>
+          <div class="skill"><i class="fas fa-seedling" title="Hydroponics"></i><span data-i18n="hydro">Hydro</span></div>
+          <div class="skill"><i class="fas fa-camera-retro" title="Photography"></i><span data-i18n="photography">Photography</span></div>
+          <div class="skill"><i class="fas fa-bicycle" title="Bicycling"></i><span data-i18n="biking">Biking</span></div>
+          <div class="skill"><i class="fas fa-campground" title="Camping & Hiking"></i><span data-i18n="camping">Camping</span></div>
+          <div class="skill"><i class="fas fa-chess-knight" title="Board Games"></i><span data-i18n="boardgames">Boardgames</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Language translations
+    const translations = {
+      en: {
+        "theme": "Theme",
+        "tagline": "Software Engineer · Marketing Ops · Photographer · Digital Explorer",
+        "about": "I love building solutions that connect people and solve real-world problems. Throughout my career, I've worked across diverse industries, blending technology, strategy, and creativity. I'm also a professional photographer, certified scuba diver, meditator, and lifelong learner — always curious, always creating with purpose.",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "tech-stack": "Tech Stack",
+        "devops": "DevOps",
+        "markops": "MarkOps",
+        "coding": "Coding",
+        "ai": "AI / n8n",
+        "linux": "Linux",
+        "iot": "IoT",
+        "sql": "SQL",
+        "docker": "Docker",
+        "html": "HTML",
+        "js": "JS",
+        "business": "Business",
+        "marketing": "Marketing",
+        "growth": "Growth",
+        "google-ads": "Google Ads",
+        "meta-ads": "Meta Ads",
+        "leadership": "Leadership",
+        "ux-ui": "UX/UI",
+        "personal": "Personal",
+        "meditation": "Meditation",
+        "buddhism": "Buddhism",
+        "3d-printing": "3D Printing",
+        "3d-modeling": "3D Modeling",
+        "audiophile": "Audiophile",
+        "sustainability": "Sustainability",
+        "hydro": "Hydro",
+        "photography": "Photography",
+        "biking": "Biking",
+        "camping": "Camping",
+        "boardgames": "Boardgames"
+      },
+      es: {
+        "theme": "Tema",
+        "tagline": "Ingeniero de Software · Marketing Ops · Fotógrafo · Explorador Digital",
+        "about": "Me encanta construir soluciones que conecten a las personas y resuelvan problemas reales. A lo largo de mi carrera, he trabajado en diversas industrias, combinando tecnología, estrategia y creatividad. También soy fotógrafo profesional, buceador certificado, meditador y aprendiz de por vida — siempre curioso, siempre creando con propósito.",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "tech-stack": "Tecnologías",
+        "devops": "DevOps",
+        "markops": "MarkOps",
+        "coding": "Programación",
+        "ai": "IA / n8n",
+        "linux": "Linux",
+        "iot": "IoT",
+        "sql": "SQL",
+        "docker": "Docker",
+        "html": "HTML",
+        "js": "JS",
+        "business": "Negocios",
+        "marketing": "Marketing",
+        "growth": "Crecimiento",
+        "google-ads": "Google Ads",
+        "meta-ads": "Meta Ads",
+        "leadership": "Liderazgo",
+        "ux-ui": "UX/UI",
+        "personal": "Personal",
+        "meditation": "Meditación",
+        "buddhism": "Budismo",
+        "3d-printing": "Impresión 3D",
+        "3d-modeling": "Modelado 3D",
+        "audiophile": "Audiófilos",
+        "sustainability": "Sostenibilidad",
+        "hydro": "Hidroponía",
+        "photography": "Fotografía",
+        "biking": "Ciclismo",
+        "camping": "Camping",
+        "boardgames": "Juegos de mesa"
+      },
+      pt: {
+        "theme": "Tema",
+        "tagline": "Engenheiro de Software · Marketing Ops · Fotógrafo · Explorador Digital",
+        "about": "Adoro criar soluções que conectem pessoas e resolvam problemas reais. Ao longo da minha carreira, trabalhei em diversas indústrias, combinando tecnologia, estratégia e criatividade. Também sou fotógrafo profissional, mergulhador certificado, meditador e eterno aprendiz — sempre curioso, sempre criando com propósito.",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "tech-stack": "Tecnologias",
+        "devops": "DevOps",
+        "markops": "MarkOps",
+        "coding": "Programação",
+        "ai": "IA / n8n",
+        "linux": "Linux",
+        "iot": "IoT",
+        "sql": "SQL",
+        "docker": "Docker",
+        "html": "HTML",
+        "js": "JS",
+        "business": "Negócios",
+        "marketing": "Marketing",
+        "growth": "Crescimento",
+        "google-ads": "Google Ads",
+        "meta-ads": "Meta Ads",
+        "leadership": "Liderança",
+        "ux-ui": "UX/UI",
+        "personal": "Pessoal",
+        "meditation": "Meditação",
+        "buddhism": "Budismo",
+        "3d-printing": "Impressão 3D",
+        "3d-modeling": "Modelagem 3D",
+        "audiophile": "Audiófilos",
+        "sustainability": "Sustentabilidade",
+        "hydro": "Hidroponia",
+        "photography": "Fotografia",
+        "biking": "Ciclismo",
+        "camping": "Camping",
+        "boardgames": "Jogos de tabuleiro"
+      },
+      fr: {
+        "theme": "Thème",
+        "tagline": "Ingénieur Logiciel · Marketing Ops · Photographe · Explorateur Digital",
+        "about": "J'aime créer des solutions qui connectent les personnes et résolvent des problèmes réels. Tout au long de ma carrière, j'ai travaillé dans diverses industries, combinant technologie, stratégie et créativité. Je suis aussi photographe professionnel, plongeur certifié, méditant et éternel apprenant — toujours curieux, toujours créant avec un but précis.",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "tech-stack": "Technologies",
+        "devops": "DevOps",
+        "markops": "MarkOps",
+        "coding": "Programmation",
+        "ai": "IA / n8n",
+        "linux": "Linux",
+        "iot": "IoT",
+        "sql": "SQL",
+        "docker": "Docker",
+        "html": "HTML",
+        "js": "JS",
+        "business": "Business",
+        "marketing": "Marketing",
+        "growth": "Croissance",
+        "google-ads": "Google Ads",
+        "meta-ads": "Meta Ads",
+        "leadership": "Leadership",
+        "ux-ui": "UX/UI",
+        "personal": "Personnel",
+        "meditation": "Méditation",
+        "buddhism": "Bouddhisme",
+        "3d-printing": "Impression 3D",
+        "3d-modeling": "Modélisation 3D",
+        "audiophile": "Audiophile",
+        "sustainability": "Durabilité",
+        "hydro": "Hydroponie",
+        "photography": "Photographie",
+        "biking": "Cyclisme",
+        "camping": "Camping",
+        "boardgames": "Jeux de société"
+      },
+      zh: {
+        "theme": "主题",
+        "tagline": "软件工程师 · 营销运营 · 摄影师 · 数字探索者",
+        "about": "我热爱构建能连接人与人并解决实际问题的解决方案。在我的职业生涯中，我跨越多个行业工作，融合技术、策略和创造力。我也是专业摄影师、认证潜水员、冥想者和终身学习者——始终保持好奇心，始终有目的地创造。",
+        "github": "GitHub",
+        "linkedin": "领英",
+        "tech-stack": "技术栈",
+        "devops": "DevOps",
+        "markops": "营销运营",
+        "coding": "编程",
+        "ai": "人工智能/n8n",
+        "linux": "Linux",
+        "iot": "物联网",
+        "sql": "SQL",
+        "docker": "Docker",
+        "html": "HTML",
+        "js": "JS",
+        "business": "商业",
+        "marketing": "营销",
+        "growth": "增长",
+        "google-ads": "谷歌广告",
+        "meta-ads": "Meta广告",
+        "leadership": "领导力",
+        "ux-ui": "用户体验/界面",
+        "personal": "个人",
+        "meditation": "冥想",
+        "buddhism": "佛教",
+        "3d-printing": "3D打印",
+        "3d-modeling": "3D建模",
+        "audiophile": "音响发烧友",
+        "sustainability": "可持续性",
+        "hydro": "水培",
+        "photography": "摄影",
+        "biking": "骑行",
+        "camping": "露营",
+        "boardgames": "桌游"
+      },
+      th: {
+        "theme": "ธีม",
+        "tagline": "วิศวกรซอฟต์แวร์ · ปฏิบัติการการตลาด · ช่างภาพ · นักสำรวจดิจิทัล",
+        "about": "ผมชอบสร้างโซลูชั่นที่เชื่อมโยงผู้คนและแก้ปัญหาในโลกจริง ตลอดอาชีพของผม ผมได้ทำงานในหลากหลายอุตสาหกรรม ผสมผสานเทคโนโลยี กลยุทธ์ และความคิดสร้างสรรค์ ผมยังเป็นช่างภาพมืออาชีพ นักดำน้ำที่ได้รับการรับรอง นักทำสมาธิ และผู้เรียนรู้ตลอดชีวิต — มีความอยากรู้อยากเห็นเสมอ สร้างสรรค์อย่างมีจุดมุ่งหมายเสมอ",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "tech-stack": "เทคโนโลยี",
+        "devops": "DevOps",
+        "markops": "การตลาด",
+        "coding": "เขียนโค้ด",
+        "ai": "AI / n8n",
+        "linux": "Linux",
+        "iot": "IoT",
+        "sql": "SQL",
+        "docker": "Docker",
+        "html": "HTML",
+        "js": "JS",
+        "business": "ธุรกิจ",
+        "marketing": "การตลาด",
+        "growth": "การเติบโต",
+        "google-ads": "Google Ads",
+        "meta-ads": "Meta Ads",
+        "leadership": "ความเป็นผู้นำ",
+        "ux-ui": "UX/UI",
+        "personal": "ส่วนตัว",
+        "meditation": "การทำสมาธิ",
+        "buddhism": "พุทธศาสนา",
+        "3d-printing": "การพิมพ์ 3D",
+        "3d-modeling": "การสร้างโมเดล 3D",
+        "audiophile": "นักเล่นเครื่องเสียง",
+        "sustainability": "ความยั่งยืน",
+        "hydro": "ไฮโดรโปนิกส์",
+        "photography": "การถ่ายภาพ",
+        "biking": "การปั่นจักรยาน",
+        "camping": "การตั้งแคมป์",
+        "boardgames": "บอร์ดเกม"
+      }
+    };
+    
+    // Set the language
+    function setLanguage(lang) {
+      document.documentElement.setAttribute('lang', lang);
+      
+      // Update all elements with data-i18n attribute
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update the active language button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+    
+    // Add event listeners to language buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const lang = e.target.getAttribute('data-lang');
+        setLanguage(lang);
+      });
+    });
+    
+    // Theme toggle function
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", newTheme);
+      
+      // Update theme icon
+      const themeIcon = document.querySelector('.theme-toggle i');
+      if (newTheme === "dark") {
+        themeIcon.className = "fas fa-sun";
+      } else {
+        themeIcon.className = "fas fa-moon";
+      }
+    }
+    
+    // Initialize with English
+    setLanguage('en');
+    
+    // Check for user's preferred color scheme
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('.theme-toggle i').className = "fas fa-sun";
+    }
+  </script>
+</body>
+</html>
