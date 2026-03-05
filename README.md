@@ -16,7 +16,7 @@
 
 I love building solutions that connect people and solve real-world problems. Throughout my career, I've worked across diverse industries — from digital security and software development to SaaS marketing — blending technology, strategy, and creativity.
 
-Currently **Director of Marketing at [Loggro](https://loggro.com)**, a Colombian cloud ERP/SaaS company with 30+ years in the market. Previously, I led digital marketing and business development at **PSL**, worked as a **Solution Manager at Gemalto**, and started my career as a **Development Engineer at Microsoft**.
+Currently **Director of Marketing & Growth at [Loggro](https://loggro.com)**, a Colombian cloud ERP/SaaS company with 30+ years in the market. Previously, I led digital marketing and business development at **PSL**, worked as a **Solution Manager at Gemalto**, and started my career as a **Development Engineer at Microsoft**.
 
 I'm also a professional photographer, certified scuba diver, meditator, and lifelong learner — always curious, always creating with purpose.
 
